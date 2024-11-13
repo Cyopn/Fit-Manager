@@ -7,7 +7,7 @@ if (links.length) {
                 link.classList.remove('active');
             });
             link.classList.add('active');
-            
         });
     });
 }
+

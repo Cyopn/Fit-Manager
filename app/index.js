@@ -11,10 +11,15 @@ app.get('/', function (req, res) {
     res.render('index');
 });
 
-/* app.get("/dashboard", function (req, res) {
-res.render('dashboard');
+app.get("/admin", function (req, res) {
+res.render('admin');
 })
- */
+
+app.get('/signin', function (req, res) {
+    res.render('signin');
+});
+
+
 if (!module.parent) {
     app.listen(4000);
     console.log('Express started on port 4000');
