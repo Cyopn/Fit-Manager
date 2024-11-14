@@ -19,8 +19,11 @@ app.get('/signin', function (req, res) {
     res.render('signin');
 });
 
+app.get("/dashboard", function (req, res) {
+    res.render('dashboard');
+})
 
 if (!module.parent) {
     app.listen(4000);
-    console.log('Express started on port 4000');
+    console.log(`Aplicacion corriendo en http://localhost:4000`);
 }
