@@ -1,7 +1,6 @@
 const { Client, Pool } = require("pg");
 const pool = new Pool({ connectionString: process.env.database_url });
 require("dotenv").config()
-const client = new Client(process.env.database_url);
 
 const check_connection = async (req, res) => {
     pool.connect(function (err, client, done) {
@@ -16,19 +15,16 @@ const check_connection = async (req, res) => {
 
 const login = async (req, res) => {
     const { username, password } = req.body;
-
     pool.connect(function (err, client, done) {
         if (err) return res.status(500).json({ message: 'Error al crear conexion', data: err })
         client.query(`SELECT * FROM public."Empleado" WHERE usuario = '${username}' and contraseña = '${password}';`, function (err, result) {
             done();
             if (err) return res.status(500).json({ message: 'Error al realizar consulta', data: err });
-            console.log(result.rows.length)
             if (result.rows.length < 1) return res.status(401).json({ message: 'No autorizado', auth: false });
             res.status(200).json({ message: 'Autorizado', auth: true });
         });
     });
 }
-
 
 module.exports = {
     check_connection,

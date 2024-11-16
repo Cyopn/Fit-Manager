@@ -229,3 +229,61 @@ table {
     float: left;
     width: 50%;
 }
+
+.inputs label {
+    width: 80%;
+    padding: 3.4px;
+    display: inline-block;
+}
+
+.calendar-container {
+    margin: 0 auto 0;
+    width: 80%;
+    text-align: center;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-header button {
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.calendar-day {
+    font-weight: bold;
+    padding: 5px;
+    background-color: #ddd;
+    border-radius: 4px;
+}
+
+.day {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.day:hover {
+    background-color: #d0d0f5;
+}
+
+.service-info {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: none;
+}
