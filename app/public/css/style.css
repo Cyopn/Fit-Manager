@@ -179,6 +179,12 @@ table {
     position: fixed;
 }
 
+.signin-container {
+    top: 75px;
+    height: calc(100vh - 75px);
+    width: 99%;
+}
+
 .top-signin table {
     margin: 0 auto;
     height: 100%;
@@ -208,12 +214,6 @@ table {
 
 .top-signin td.active {
     background-color: #95BCF2;
-}
-
-.signin-container {
-    top: 75px;
-    height: 90vh;
-    width: 100%;
 }
 
 .signin-content {
@@ -286,4 +286,16 @@ table {
     border: 1px solid #ccc;
     border-radius: 4px;
     display: none;
+}
+
+.map {
+    margin: 0 auto 0;
+    height: 70vh;
+    width: 90%;
+}
+
+#map {
+    top: 10%;
+    height: 80%;
+    width: autpo;
 }
