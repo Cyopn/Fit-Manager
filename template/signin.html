@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
     <title>Fit Manager</title>
 </head>
 
@@ -83,7 +85,11 @@
         </div>
         <div class="signin-container" id="location">
             <div class="signin-content">
-                <p>Lorem ipsum dolor sit amet, labore laboriosam?</p>
+                <div class="map">
+                    <h1>Ubicacion</h1>
+                    <p></p>
+                    <div id="map"></div>
+                </div>
             </div>
         </div>
     </main>
