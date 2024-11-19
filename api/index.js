@@ -5,7 +5,7 @@ require("dotenv").config()
 
 
 const app = express()
-const port = 3000;
+const port = 5000;
 app.use(body_parser.json())
 
 app.use(body_parser.urlencoded({ extended: true }))
