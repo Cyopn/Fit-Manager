@@ -26,7 +26,20 @@ const login = async (req, res) => {
     });
 }
 
+const save_user = async (req, res) => {
+    const { nombre, apellido_paterno, apellido_materno, edad, correo_electronico, telefono } = req.body
+    pool.connect(function (err, client, done) {
+        if (err) return res.status(500).json({ message: 'Error al crear conexion', data: err })
+        client.query(`INSERT INTO public."Miembro" (nombre, apellido_paterno, apellido_materno, edad, correo_electronico, telefono) VALUES ('${nombre}', '${apellido_paterno}', '${apellido_materno}', ${edad}, '${correo_electronico}, '${telefono}');`, function (err, result) {
+            done()
+            if (err) return res.status(500).json({ message: 'Error al guardar usuario', data: err });
+            res.status(200).json({ message: 'Usuario guardado', auth: true });
+        })
+    })
+}
+
 module.exports = {
     check_connection,
-    login
+    login,
+    save_user
 }
