@@ -26,8 +26,10 @@ app.get("/", (req, res) => {
     res.status(200).json({ message: `En linea el en puerto ${port}` })
 })
 
-const { check_connection, login, save_user } = require("./queries")
+const { check_connection, login, save_user, get_products, get_equipment, get_member } = require("./queries")
 app.get("/check", check_connection)
 app.post("/login", login)
 app.post("/save_user", save_user)
-
+app.get("/get_products", get_products)
+app.get("/get_equipment", get_equipment)
+app.get("/get_member", get_member)

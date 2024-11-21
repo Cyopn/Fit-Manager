@@ -75,7 +75,7 @@ DROP TABLE IF EXISTS public."Venta";
 
 CREATE TABLE
     IF NOT EXISTS public."Venta" (
-        id_venta bigint NOT NULL,
+        id_venta serial NOT NULL,
         total double precision NOT NULL,
         fecha date NOT NULL,
         CONSTRAINT "Venta_pkey" PRIMARY KEY (id_venta)
@@ -339,3 +339,19 @@ VALUES
         'Contractor de pecho / Butterfly (95 kg).',
         1020571819407081473
     );
+
+
+-- Obtener ultima fila 
+SELECT
+    *
+FROM
+    public."Venta"
+ORDER BY
+    fecha DESC
+LIMIT
+    1;
+
+INSERT INTO
+    public."Venta" (total, fecha)
+VALUES
+    (?, ?);
