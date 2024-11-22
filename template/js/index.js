@@ -1,5 +1,6 @@
-const links = document.querySelectorAll('.nav-link');
+const url_request = 'http://localhost:5000/';
 
+const links = document.querySelectorAll('.nav-link');
 if (links.length) {
     links.forEach((link) => {
         link.addEventListener('click', (e) => {
@@ -9,6 +10,22 @@ if (links.length) {
             link.classList.add('active');
         });
     });
+}
+
+async function login() {
+    const username = document.getElementById('user').value
+    const password = document.getElementById('password').value
+    try {
+        const response = await fetch(`${url_request}login`, { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password }) })
+        const data = await response.json()
+        if (data.auth) {
+            window.location.href = '/dashboard'
+        } else {
+            alert('Usuario o contraseña incorrectos')
+        }
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 const diasFestivos = [
@@ -113,3 +130,19 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 var target = L.latLng('47.50737', '19.04611');
 map.setView(target, 14);
 L.marker(target).addTo(map);
+
+async function save_user() {
+    const nombre = document.getElementById("name").value
+    const apellido_paterno = document.getElementById("last_f").value
+    const apellido_materno = document.getElementById("last_m").value
+    const edad = document.getElementById("age").value
+    const correo_electronico = document.getElementById("email").value
+    const telefono = document.getElementById("phone").value
+    try {
+        const response = await fetch(`${url_request}save_user`, { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ nombre, apellido_paterno, apellido_materno, edad, correo_electronico, telefono }) })
+        const data = await response.json()
+        window.alert(data.message)
+    } catch (e) {
+        console.log(e)
+    }
+}

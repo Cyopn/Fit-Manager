@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet" />
     <title>Fit Manager</title>
 </head>
 
@@ -25,7 +25,7 @@
             <div class="signin-content">
                 <h1>Bienvenido</h1>
                 <p>Registrate:</p>
-                <form action="" method="" class="form-signin">
+                <div class="form-signin">
                     <div class="inputs">
                         <label for="name">Nombre</label>
                         <br><br>
@@ -42,7 +42,7 @@
                     <div class="inputs">
                         <input type="text" name="name" id="name">
                         <br><br>
-                        <input type="text" name="last_f" id="last_m">
+                        <input type="text" name="last_f" id="last_f">
                         <br><br>
                         <input type="text" name="last_m" id="last_m">
                         <br><br>
@@ -54,8 +54,8 @@
                         <br><br>
                         <br><br>
                     </div>
-                    <button>Registrar</button>
-                </form>
+                    <button onclick="save_user()">Registrar</button>
+                </div>
             </div>
         </div>
         <div class="signin-container" id="calendar">
@@ -93,7 +93,7 @@
             </div>
         </div>
     </main>
-    <script src="./script.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>

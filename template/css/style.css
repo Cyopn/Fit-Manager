@@ -181,7 +181,7 @@ table {
 
 .signin-container {
     top: 75px;
-    height: calc(100vh - 75px);
+    height: calc(110vh - 75px);
     width: 99%;
 }
 
@@ -298,4 +298,15 @@ table {
     top: 10%;
     height: 80%;
     width: autpo;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
