@@ -74,7 +74,12 @@ const get_member = async (req, res) => {
 
 const get_employee = async (req, res) => {
     pool.connect(function (err, client, done) {
-
+        if (err) return res.status(500).json({ message: "Error al crear conexion", data: err })
+        client.query(`SELECT * FROM public."Empleado";`, function (err, result) {
+            done()
+            if (err) return res.status(500).json({ message: "Error al obtener miembros", data: err })
+            res.status(200).json({ message: "Consulta correcta", data: result.rows })
+        })
     })
 }
 
@@ -84,5 +89,6 @@ module.exports = {
     save_user,
     get_products,
     get_equipment,
-    get_member
+    get_member,
+    get_employee
 }
