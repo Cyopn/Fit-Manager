@@ -48,7 +48,7 @@ const monthYearDisplay = document.getElementById('monthYear');
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 
-function updateMonthYearDisplay() {
+function update_month_year_display() {
     const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     monthYearDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
 }
@@ -65,7 +65,7 @@ function obtenerHorarioServicio(fecha) {
     return horariosPorDia[dia];
 }
 
-function generateCalendar() {
+function generate_calendar() {
     calendarContainer.innerHTML = `
         <div class="calendar-day">Lun</div>
         <div class="calendar-day">Mar</div>
@@ -104,8 +104,8 @@ document.getElementById('prevMonth').addEventListener('click', () => {
         currentMonth = 11;
         currentYear--;
     }
-    updateMonthYearDisplay();
-    generateCalendar();
+    update_month_year_display();
+    generate_calendar();
 });
 
 document.getElementById('nextMonth').addEventListener('click', () => {
@@ -114,12 +114,12 @@ document.getElementById('nextMonth').addEventListener('click', () => {
         currentMonth = 0;
         currentYear++;
     }
-    updateMonthYearDisplay();
-    generateCalendar();
+    update_month_year_display();
+    generate_calendar();
 });
 
-updateMonthYearDisplay();
-generateCalendar();
+update_month_year_display();
+generate_calendar();
 
 var element = document.getElementById('map');
 var map = L.map(element);

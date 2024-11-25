@@ -48,7 +48,7 @@ const monthYearDisplay = document.getElementById('monthYear');
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 
-function updateMonthYearDisplay() {
+function update_month_year_display() {
     const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     monthYearDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
 }
@@ -65,7 +65,7 @@ function obtenerHorarioServicio(fecha) {
     return horariosPorDia[dia];
 }
 
-function generateCalendar() {
+function generate_calendar() {
     calendarContainer.innerHTML = `
         <div class="calendar-day">Lun</div>
         <div class="calendar-day">Mar</div>
@@ -104,8 +104,8 @@ document.getElementById('prevMonth').addEventListener('click', () => {
         currentMonth = 11;
         currentYear--;
     }
-    updateMonthYearDisplay();
-    generateCalendar();
+    update_month_year_display();
+    generate_calendar();
 });
 
 document.getElementById('nextMonth').addEventListener('click', () => {
@@ -114,22 +114,29 @@ document.getElementById('nextMonth').addEventListener('click', () => {
         currentMonth = 0;
         currentYear++;
     }
-    updateMonthYearDisplay();
-    generateCalendar();
+    update_month_year_display();
+    generate_calendar();
 });
 
-updateMonthYearDisplay();
-generateCalendar();
+update_month_year_display();
+generate_calendar();
 
-var element = document.getElementById('map');
-var map = L.map(element);
+function add_map() {
+    try {
+        var element = document.getElementById('map');
+        var map = L.map(element);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        var target = L.latLng('47.50737', '19.04611');
+        map.setView(target, 14);
+        L.marker(target).addTo(map);
+    } catch (e) {
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-var target = L.latLng('47.50737', '19.04611');
-map.setView(target, 14);
-L.marker(target).addTo(map);
+    }
+}
+
+add_map()
 
 async function save_user() {
     const nombre = document.getElementById("name").value
@@ -146,3 +153,102 @@ async function save_user() {
         console.log(e)
     }
 }
+
+async function load_equipment() {
+    try {
+        const response = await fetch(`${url_request}get_equipment`, { method: 'GET', headers: { "Content-Type": "aplication/json" } })
+        const data = await response.json()
+        const tableBody = document.getElementById("equiposTableBody");
+        tableBody.innerHTML = "";
+        data.data.forEach(equipo => {
+            const row = `
+                <tr>
+                    <td>${equipo.id_equipo}</td>
+                    <td>${equipo.nombre}</td>
+                    <td>${equipo.marca}</td>
+                    <td>${equipo.descripcion}</td>
+                    <td>${equipo.id_empleado}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    } catch (e) {
+    }
+}
+
+async function load_employee() {
+    try {
+        const response = await fetch(`${url_request}get_employee`, { method: 'GET', headers: { "Content-Type": "aplication/json" } })
+        const data = await response.json()
+        const tableBody = document.getElementById("empleadosTableBody");
+        tableBody.innerHTML = "";
+        data.data.forEach(equipo => {
+            const row = `
+                <tr>
+                    <td>${equipo.id_empleado}</td>
+                    <td>${equipo.nombre}</td>
+                    <td>${equipo.apellido_paterno}</td>
+                    <td>${equipo.apellido_materno}</td>
+                    <td>${equipo.edad}</td>
+                    <td>${equipo.correo_electronico}</td>
+                    <td>${equipo.usuario}</td>
+                    <td>${equipo.puesto}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    } catch (e) {
+    }
+}
+
+async function load_user() {
+    try {
+        const response = await fetch(`${url_request}get_member`, { method: 'GET', headers: { "Content-Type": "aplication/json" } })
+        const data = await response.json()
+        const tableBody = document.getElementById("usuariosTableBody");
+        tableBody.innerHTML = "";
+        data.data.forEach(equipo => {
+            const row = `
+                <tr>
+                    <td>${equipo.id_miembro}</td>
+                    <td>${equipo.nombre}</td>
+                    <td>${equipo.apellido_paterno}</td>
+                    <td>${equipo.apellido_materno}</td>
+                    <td>${equipo.edad}</td>
+                    <td>${equipo.correo_electronico}</td>
+                    <td>${equipo.telefono}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    } catch (e) {
+    }
+}
+
+async function load_product() {
+    try {
+        const response = await fetch(`${url_request}get_products`, { method: 'GET', headers: { "Content-Type": "aplication/json" } })
+        const data = await response.json()
+        const tableBody = document.getElementById("productosTableBody");
+        tableBody.innerHTML = "";
+        data.data.forEach(equipo => {
+            const row = `
+                <tr>
+                    <td>${equipo.id_producto}</td>
+                    <td>${equipo.nombre}</td>
+                    <td>${equipo.marca}</td>
+                    <td>${equipo.descripcion}</td>
+                    <td>$ ${equipo.precio}</td>
+                    <td>${equipo.inventario}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    } catch (e) {
+    }
+}
+
+load_equipment()
+load_employee()
+load_user()
+load_product()

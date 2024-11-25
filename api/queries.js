@@ -147,11 +147,7 @@ const sub_inventory = async (sales) => {
             })
         })
     });
-
-
 }
-
-
 
 module.exports = {
     check_connection,
