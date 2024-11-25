@@ -77,7 +77,7 @@ CREATE TABLE
     IF NOT EXISTS public."Venta" (
         id_venta serial NOT NULL,
         total double precision NOT NULL,
-        fecha date NOT NULL,
+        fecha timestamp NOT NULL,
         CONSTRAINT "Venta_pkey" PRIMARY KEY (id_venta)
     );
 
@@ -340,7 +340,6 @@ VALUES
         1020571819407081473
     );
 
-
 -- Obtener ultima fila 
 SELECT
     *
@@ -354,4 +353,15 @@ LIMIT
 INSERT INTO
     public."Venta" (total, fecha)
 VALUES
-    (?, ?);
+    ();
+
+INSERT INTO
+    public."Venta_Producto" (cantidad, id_venta, id_producto)
+VALUES
+    (?, ?, ?);
+
+UPDATE public."Producto"
+SET
+    inventario = ?
+WHERE
+    < condition >;
