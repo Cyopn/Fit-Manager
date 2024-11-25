@@ -18,7 +18,10 @@
                 <table>
                     <tr>
                         <td class="nav-link active"><a href="#about">ACERCA DE</a></td>
-                        <td class="nav-link"><a href="#sales">VENTAS</a></td>
+                        <td class="nav-link"><a href="#equipment">EQUIPO</a></td>
+                        <td class="nav-link"><a href="#employee">PERSONAL</a></td>
+                        <td class="nav-link"><a href="#user">USUARIOS</a></td>
+                        <td class="nav-link"><a href="#product">PRODUCTOS</a></td>
                         <td class="nav-link"><a href="#calendar">CALENDARIO</a></td>
                         <td class="nav-link"><a href="#docs">DOCUMENTACION</a></td>
                     </tr>
@@ -48,12 +51,81 @@
                 </div>
             </div>
         </div>
-        <div class="dash-container" id="sales">
+        <div class="dash-container" id="equipment">
             <div class="admin-row">
-                <div class="dash-sales">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis iste ullam aliquid nostrum,
-                        blanditiis eaque eius repellendus, enim, id temporibus provident nisi iure assumenda error
-                        pariatur nihil perspiciatis commodi delectus.</p>
+                <div class="data-show">
+                    <table class="table-data">
+                        <thead>
+                            <tr>
+                                <th>Identificador</th>
+                                <th>Nombre</th>
+                                <th>Marca</th>
+                                <th>Descripción</th>
+                                <th>Encargado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="equiposTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="dash-container" id="employee">
+            <div class="admin-row">
+                <div class="data-show">
+                    <table class="table-data">
+                        <thead>
+                            <tr>
+                                <th>Identificador</th>
+                                <th>Nombre</th>
+                                <th>Apellido paterno</th>
+                                <th>Apellido materno</th>
+                                <th>Edad</th>
+                                <th>Correo electronico</th>
+                                <th>Usuario</th>
+                                <th>Puesto</th>
+                            </tr>
+                        </thead>
+                        <tbody id="empleadosTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="dash-container" id="user">
+            <div class="admin-row">
+                <div class="data-show">
+                    <table class="table-data">
+                        <thead>
+                            <tr>
+                                <th>Identificador</th>
+                                <th>Nombre</th>
+                                <th>Apellido paterno</th>
+                                <th>Apellido materno</th>
+                                <th>Edad</th>
+                                <th>Correo electronico</th>
+                                <th>Telefono</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usuariosTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="dash-container" id="product">
+            <div class="admin-row">
+                <div class="data-show">
+                    <table class="table-data">
+                        <thead>
+                            <tr>
+                                <th>Identificador</th>
+                                <th>Nombre</th>
+                                <th>Marca</th>
+                                <th>Descripcion</th>
+                                <th>Precio</th>
+                                <th>Inventario</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productosTableBody"></tbody>
+                    </table>
                 </div>
             </div>
         </div>
